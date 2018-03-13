@@ -19,7 +19,7 @@ public class RandomActivity extends AppCompatActivity implements View.OnTouchLis
 
     // Declaring all the variables needed to use throughout
     Vector<Integer> playerPattern = new Vector<>(), simonPattern = new Vector<>();
-    private int tempo, count, playerChoice, numChoices, mode, score;
+    private int tempo, count, playerChoice, numChoices, score;
     private int colorBtns[], colorImg[], pressedImg[], soundID[];
     private RandomActivity.Simon simon;
     private RandomActivity.CountDown countDown;
@@ -143,14 +143,14 @@ public class RandomActivity extends AppCompatActivity implements View.OnTouchLis
      */
     private void scoreUpdate() {
         String scoreTextView;
-        score = score + mode;
+        score = score + 1;
         if (score < 10) scoreTextView = "0" + score;
         else if(score >= 99){
             score = 99;
             scoreTextView = String.valueOf(score);
             gameOver();
         }else {scoreTextView = String.valueOf(score);}
-        scoreTV.setText(scoreTextView);
+            scoreTV.setText(scoreTextView);
     }
 
     /**

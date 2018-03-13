@@ -21,7 +21,7 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
 
     // Declaring all the variables needed to use throughout
     Vector<Integer> playerPattern = new Vector<>(), simonPattern = new Vector<>();
-    private int tempo, count, playerChoice, numChoices, mode, score;
+    private int tempo, count, playerChoice, numChoices, score;
     private int colorBtns[], colorImg[], pressedImg[], soundID[];
     private Simon simon;
     private CountDown countDown;
@@ -31,8 +31,7 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
     public TextView scoreTV, turnTV, modeTV;
     public ImageButton greenB, blueB, yellowB, redB;
     public boolean match;
-    public String highScore1key = "key1", highScore2key = "key2",
-            highScore3key = "key3", highScore4key = "key4", highScore5key = "key5";
+    public String highScore1key = "key1", highScore2key = "key2", highScore3key = "key3", highScore4key = "key4", highScore5key = "key5";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,49 +125,22 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
     }
 
     /**
-     * randomMode uses a random number to make Simon's patter random
-     */
-    private int randomMode() {
-        Random random = new Random(System.nanoTime());
-        int index = random.nextInt(100);
-        index = index % 4;
-        count++;
-        return index;
-    }
-
-    /**
      * gameMode determines what game mode is chosen from the menu.
      */
     private void gameMode() {
         initiateVariables();
 
-        if (mode == 2) {
-            setModeTextView("Random Mode");
-            countDown = new CountDown();
-            countDown.execute();
-        } else if (mode == 3) {
-            setModeTextView("Reverse Mode");
-            countDown = new CountDown();
-            countDown.execute();
-        } else {
-            setModeTextView("Pattern Mode");
-            countDown = new CountDown();
-            countDown.execute();
-        }
+        setModeTextView("Pattern Mode");
+        countDown = new PatternActivity.CountDown();
+        countDown.execute();
     }
 
     /**
      * simonsTurn calls Simons turn
      */
     private void simonsTurn() {
-        if (mode == 2) {
-            simonPattern.add(randomMode());
-        } else if (mode == 3) {
-            simonPattern.add(patternMode());
-        } else {
-            simonPattern.add(patternMode());
-        }
-        simon = new Simon();
+        simonPattern.add(patternMode());
+        simon = new PatternActivity.Simon();
         simon.execute();
     }
 
@@ -177,14 +149,14 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
      */
     private void scoreUpdate() {
         String scoreTextView;
-        score = score+1;
+        score = score + 1;
         if (score < 10) scoreTextView = "0" + score;
         else if(score >= 99){
             score = 99;
             scoreTextView = String.valueOf(score);
             gameOver();
         }else {scoreTextView = String.valueOf(score);}
-        scoreTV.setText(scoreTextView);
+            scoreTV.setText(scoreTextView);
     }
 
     /**

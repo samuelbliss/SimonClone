@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 import java.util.Vector;
 
@@ -21,7 +20,7 @@ public class ReverseActivity extends AppCompatActivity implements View.OnTouchLi
 
     // Declaring all the variables needed to use throughout
     Vector<Integer> playerPattern = new Vector<>(), simonPattern = new Vector<>();
-    private int tempo, count, playerChoice, numChoices, mode, score;
+    private int tempo, count, playerChoice, numChoices, score;
     private int colorBtns[], colorImg[], pressedImg[], soundID[];
     private ReverseActivity.Simon simon;
     private ReverseActivity.CountDown countDown;
@@ -148,7 +147,7 @@ public class ReverseActivity extends AppCompatActivity implements View.OnTouchLi
      */
     private void scoreUpdate() {
         String scoreTextView;
-        score = score + mode;
+        score = score + 1;
         if (score < 10) scoreTextView = "0" + score;
         else if(score >= 99){
             score = 99;
@@ -168,6 +167,7 @@ public class ReverseActivity extends AppCompatActivity implements View.OnTouchLi
                 Collections.reverse(simonPattern);
                 if (simonPattern.elementAt(numChoices - 1).equals(playerChoice)) {
                     match = true;
+                    Collections.reverse(simonPattern);
                 } else {
                     match = false;
                     gameOver();
@@ -177,6 +177,7 @@ public class ReverseActivity extends AppCompatActivity implements View.OnTouchLi
                 Collections.reverse(simonPattern);
                 if (simonPattern.elementAt(numChoices - 1).equals(playerChoice)) {
                     match = true;
+                    Collections.reverse(simonPattern);
                 } else {
                     match = false;
                     gameOver();
@@ -201,6 +202,7 @@ public class ReverseActivity extends AppCompatActivity implements View.OnTouchLi
     private void gameOver() {
         numChoices = 0;
         lockBtns = true;
+
     }
 
     /**

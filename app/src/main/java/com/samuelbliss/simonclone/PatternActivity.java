@@ -1,5 +1,7 @@
 package com.samuelbliss.simonclone;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.os.AsyncTask;
@@ -29,6 +31,8 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
     public TextView scoreTV, turnTV, modeTV;
     public ImageButton greenB, blueB, yellowB, redB;
     public boolean match;
+    public String highScore1key = "key1", highScore2key = "key2",
+            highScore3key = "key3", highScore4key = "key4", highScore5key = "key5";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,7 +177,7 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
      */
     private void scoreUpdate() {
         String scoreTextView;
-        score = score+mode;
+        score = score+1;
         if (score < 10) scoreTextView = "0" + score;
         else if(score >= 99){
             score = 99;
@@ -222,8 +226,34 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
      * gameOver ends the game and resets choices
      */
     private void gameOver() {
+        checkHighScore();
         numChoices = 0;
         lockBtns = true;
+    }
+
+    /**
+     * checkHighScore compares the players score with the five highest previous scores.
+     */
+
+    private void checkHighScore() {
+        SharedPreferences prefs = this.getSharedPreferences("highScores", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        if (score > prefs.getInt(highScore1key, 0)) {
+            editor.putInt(highScore1key, score);
+            editor.commit();
+        } else if (score > prefs.getInt(highScore2key, 0)) {
+            editor.putInt(highScore2key, score);
+            editor.commit();
+        } else if (score > prefs.getInt(highScore3key, 0)) {
+            editor.putInt(highScore3key, score);
+            editor.commit();
+        } else if (score > prefs.getInt(highScore4key, 0)) {
+            editor.putInt(highScore4key, score);
+            editor.commit();
+        } else if (score > prefs.getInt(highScore5key, 0)) {
+            editor.putInt(highScore5key, score);
+            editor.commit();
+        }
     }
 
     /**

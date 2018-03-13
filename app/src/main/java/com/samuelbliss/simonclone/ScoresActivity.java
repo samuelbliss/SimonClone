@@ -17,16 +17,40 @@ public class ScoresActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scores);
 
-        TextView tv = (TextView) findViewById(R.id.hsView);
+        TextView tv = (TextView) findViewById(R.id.patternView1);
         SharedPreferences prefs = this.getSharedPreferences("patternHighScores", Context.MODE_PRIVATE);
         tv.setText(Integer.toString(prefs.getInt(highScore1key, 0)));
-        tv = (TextView) findViewById(R.id.hsView2);
+        tv = (TextView) findViewById(R.id.patternView2);
         tv.setText(Integer.toString(prefs.getInt(highScore2key, 0)));
-        tv = (TextView) findViewById(R.id.hsView3);
+        tv = (TextView) findViewById(R.id.patternView3);
         tv.setText(Integer.toString(prefs.getInt(highScore3key, 0)));
-        tv = (TextView) findViewById(R.id.hsView4);
+        tv = (TextView) findViewById(R.id.patternView4);
         tv.setText(Integer.toString(prefs.getInt(highScore4key, 0)));
-        tv = (TextView) findViewById(R.id.hsView5);
+        tv = (TextView) findViewById(R.id.patternView5);
+        tv.setText(Integer.toString(prefs.getInt(highScore5key, 0)));
+
+        prefs = this.getSharedPreferences("reverseHighScores", Context.MODE_PRIVATE);
+        tv = (TextView) findViewById(R.id.reverseView1);
+        tv.setText(Integer.toString(prefs.getInt(highScore1key, 0)));
+        tv = (TextView) findViewById(R.id.reverseView2);
+        tv.setText(Integer.toString(prefs.getInt(highScore2key, 0)));
+        tv = (TextView) findViewById(R.id.reverseView3);
+        tv.setText(Integer.toString(prefs.getInt(highScore3key, 0)));
+        tv = (TextView) findViewById(R.id.reverseView4);
+        tv.setText(Integer.toString(prefs.getInt(highScore4key, 0)));
+        tv = (TextView) findViewById(R.id.reverseView5);
+        tv.setText(Integer.toString(prefs.getInt(highScore5key, 0)));
+
+        prefs = this.getSharedPreferences("randomHighScores", Context.MODE_PRIVATE);
+        tv = (TextView) findViewById(R.id.randomView1);
+        tv.setText(Integer.toString(prefs.getInt(highScore1key, 0)));
+        tv = (TextView) findViewById(R.id.randomView2);
+        tv.setText(Integer.toString(prefs.getInt(highScore2key, 0)));
+        tv = (TextView) findViewById(R.id.randomView3);
+        tv.setText(Integer.toString(prefs.getInt(highScore3key, 0)));
+        tv = (TextView) findViewById(R.id.randomView4);
+        tv.setText(Integer.toString(prefs.getInt(highScore4key, 0)));
+        tv = (TextView) findViewById(R.id.randomView5);
         tv.setText(Integer.toString(prefs.getInt(highScore5key, 0)));
 
     }

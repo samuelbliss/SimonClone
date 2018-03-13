@@ -31,7 +31,7 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
     public TextView scoreTV, turnTV, modeTV;
     public ImageButton greenB, blueB, yellowB, redB;
     public boolean match;
-    public String highScore1key = "key1", highScore2key = "key2",
+    private String highScore1key = "key1", highScore2key = "key2",
             highScore3key = "key3", highScore4key = "key4", highScore5key = "key5";
 
     @Override
@@ -236,7 +236,7 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
      */
 
     private void checkHighScore() {
-        SharedPreferences prefs = this.getSharedPreferences("highScores", Context.MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("patternHighScores", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         if (score > prefs.getInt(highScore1key, 0)) {
             editor.putInt(highScore1key, score);

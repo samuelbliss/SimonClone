@@ -64,19 +64,149 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/hsView5"
+        android:id="@+id/patternView1"
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="24dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232" />
+        app:layout_constraintEnd_toEndOf="@+id/patternView2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/patternView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/patternView4"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/patternView3"
+        app:layout_constraintTop_toBottomOf="@+id/patternView3" />
+
+    <TextView
+        android:id="@+id/patternView3"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/patternView5"
+        app:layout_constraintStart_toStartOf="@+id/patternView5"
+        app:layout_constraintTop_toBottomOf="@+id/patternView2" />
+
+    <TextView
+        android:id="@+id/patternView2"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/patternView3"
+        app:layout_constraintStart_toStartOf="@+id/patternView3"
+        app:layout_constraintTop_toBottomOf="@+id/patternView1" />
+
+    <TextView
+        android:id="@+id/patternView5"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/patternView4" />
+
+    <TextView
+        android:id="@+id/reverseView1"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/reverseView4"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/reverseView3"
+        app:layout_constraintTop_toBottomOf="@+id/reverseView3" />
+
+    <TextView
+        android:id="@+id/reverseView3"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/reverseView2"
+        app:layout_constraintTop_toBottomOf="@+id/reverseView2" />
+
+    <TextView
+        android:id="@+id/reverseView2"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="36dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/reverseView1"
+        app:layout_constraintTop_toBottomOf="@+id/reverseView1" />
+
+    <TextView
+        android:id="@+id/randomView1"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/hsView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/randomView4"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/randomView3"
+        app:layout_constraintTop_toBottomOf="@+id/randomView3" />
+
+    <TextView
+        android:id="@+id/randomView3"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/randomView2"
+        app:layout_constraintTop_toBottomOf="@+id/randomView2" />
+
+    <TextView
+        android:id="@+id/randomView2"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/randomView1"
+        app:layout_constraintTop_toBottomOf="@+id/randomView1" />
+
+    <TextView
+        android:id="@+id/randomView5"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/randomView4"
+        app:layout_constraintTop_toBottomOf="@+id/randomView4" />
+
+    <TextView
+        android:id="@+id/reverseView5"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/reverseView4"
+        app:layout_constraintTop_toBottomOf="@+id/reverseView4" />
 
     <TextView
         android:id="@+id/hsView3"
@@ -96,4 +226,48 @@
         app:layout_constraintStart_toEndOf="@+id/hsView2"
         app:layout_constraintTop_toBottomOf="@+id/hsView"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Top 5"
+        android:textSize="15sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="@+id/hsView3"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/hsView3"
+        app:layout_constraintTop_toBottomOf="@+id/hsView3" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:text="Top 5"
+        android:textSize="15sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="@+id/hsView4"
+        app:layout_constraintStart_toStartOf="@+id/hsView4"
+        app:layout_constraintTop_toBottomOf="@+id/hsView4" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="Top 5"
+        android:textSize="15sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="@+id/hsView2"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="@+id/hsView2"
+        app:layout_constraintTop_toBottomOf="@+id/hsView2" />
 </android.support.constraint.ConstraintLayout>

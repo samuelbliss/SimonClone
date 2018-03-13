@@ -143,7 +143,7 @@ public class RandomActivity extends AppCompatActivity implements View.OnTouchLis
      */
     private void scoreUpdate() {
         String scoreTextView;
-        score = score + mode;
+        score = score + 1;
         if (score < 10) scoreTextView = "0" + score;
         else if(score >= 99){
             score = 99;

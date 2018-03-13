@@ -18,7 +18,7 @@ public class ScoresActivity extends Activity{
         setContentView(R.layout.activity_scores);
 
         TextView tv = (TextView) findViewById(R.id.hsView);
-        SharedPreferences prefs = this.getSharedPreferences("highScores", Context.MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("patternHighScores", Context.MODE_PRIVATE);
         tv.setText(Integer.toString(prefs.getInt(highScore1key, 0)));
         tv = (TextView) findViewById(R.id.hsView2);
         tv.setText(Integer.toString(prefs.getInt(highScore2key, 0)));

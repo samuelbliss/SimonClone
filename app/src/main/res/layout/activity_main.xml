@@ -12,42 +12,66 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="SIMON"
-        android:textStyle="bold"
         android:textColor="@android:color/black"
         android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
-        android:id="@+id/play_button"
+        android:id="@+id/pattern_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="57dp"
-        android:text="Play"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="44dp"
+        android:text="Pattern Mode"
         app:layout_constraintStart_toStartOf="@+id/simon_textView"
         app:layout_constraintTop_toBottomOf="@+id/simon_textView" />
+
+    <Button
+        android:id="@+id/random_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="28dp"
+        android:text="Random Mode"
+        app:layout_constraintStart_toStartOf="@+id/pattern_button"
+        app:layout_constraintTop_toBottomOf="@+id/pattern_button" />
+
+    <Button
+        android:id="@+id/reverse_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Reverse Mode"
+        app:layout_constraintStart_toStartOf="@+id/random_button"
+        app:layout_constraintTop_toBottomOf="@+id/random_button" />
 
     <Button
         android:id="@+id/about_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
         android:text="About"
-        app:layout_constraintStart_toStartOf="@+id/play_button"
-        app:layout_constraintTop_toBottomOf="@+id/play_button" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="447dp" />
 
     <Button
         android:id="@+id/scores_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
         android:text="High Scores"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/about_button" />
+        tools:layout_editor_absoluteX="255dp"
+        tools:layout_editor_absoluteY="447dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -17,11 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameActivity"
+        <activity android:name=".PatternActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".AboutActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".ScoresActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RandomActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ReverseActivity"
             android:screenOrientation="portrait"/>
     </application>
 

@@ -3,27 +3,28 @@ package com.samuelbliss.simonclone;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 import java.util.Vector;
 
-public class GameActivity extends AppCompatActivity implements View.OnTouchListener {
 
+public class ReverseActivity extends AppCompatActivity implements View.OnTouchListener {
 
     // Declaring all the variables needed to use throughout
     Vector<Integer> playerPattern = new Vector<>(), simonPattern = new Vector<>();
     private int tempo, count, playerChoice, numChoices, mode, score;
     private int colorBtns[], colorImg[], pressedImg[], soundID[];
-    private Simon simon;
-    private CountDown countDown;
+    private ReverseActivity.Simon simon;
+    private ReverseActivity.CountDown countDown;
     private SoundPool soundPool;
     private Set<Integer> soundsLoaded;
     private boolean lockBtns;
@@ -44,6 +45,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
      */
     private void initiateVariables() {
         count = 0;
+        score = 0;
         simonPattern.clear();
         playerPattern.clear();
         tempo = 1000;
@@ -85,7 +87,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     /**
-     * onResume makes sure the sounds are reloaded for the game mode
+     * onResume makes sure the sounds are reloaded for the game mode selected
      */
     @Override
     protected void onResume() {
@@ -122,49 +124,22 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     /**
-     * randomMode uses a random number to make Simon's patter random
-     */
-    private int randomMode() {
-        Random random = new Random(System.nanoTime());
-        int index = random.nextInt(100);
-        index = index % 4;
-        count++;
-        return index;
-    }
-
-    /**
      * gameMode determines what game mode is chosen from the menu.
      */
     private void gameMode() {
         initiateVariables();
 
-        if (mode == 2) {
-            setModeTextView("Random Mode");
-            countDown = new CountDown();
-            countDown.execute();
-        } else if (mode == 3) {
-            setModeTextView("Reverse Mode");
-            countDown = new CountDown();
-            countDown.execute();
-        } else {
-            setModeTextView("Pattern Mode");
-            countDown = new CountDown();
-            countDown.execute();
-        }
+        setModeTextView("Reverse Mode");
+        countDown = new ReverseActivity.CountDown();
+        countDown.execute();
     }
 
     /**
      * simonsTurn calls Simons turn
      */
     private void simonsTurn() {
-        if (mode == 2) {
-            simonPattern.add(randomMode());
-        } else if (mode == 3) {
-            simonPattern.add(patternMode());
-        } else {
-            simonPattern.add(patternMode());
-        }
-        simon = new Simon();
+        simonPattern.add(patternMode());
+        simon = new ReverseActivity.Simon();
         simon.execute();
     }
 
@@ -173,7 +148,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
      */
     private void scoreUpdate() {
         String scoreTextView;
-        score = score+mode;
+        score = score + mode;
         if (score < 10) scoreTextView = "0" + score;
         else if(score >= 99){
             score = 99;
@@ -190,6 +165,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         lockBtns = false;
         if (numChoices > 0) {
             if (numChoices < simonPattern.size()) {
+                Collections.reverse(simonPattern);
                 if (simonPattern.elementAt(numChoices - 1).equals(playerChoice)) {
                     match = true;
                 } else {
@@ -198,6 +174,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
                 }
             }else if (numChoices == simonPattern.size()) {
                 lockBtns = true;
+                Collections.reverse(simonPattern);
                 if (simonPattern.elementAt(numChoices - 1).equals(playerChoice)) {
                     match = true;
                 } else {

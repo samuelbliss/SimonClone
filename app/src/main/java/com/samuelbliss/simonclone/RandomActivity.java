@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -30,6 +31,7 @@ public class RandomActivity extends AppCompatActivity implements View.OnTouchLis
     private boolean lockBtns;
     public TextView scoreTV, turnTV, modeTV;
     public ImageButton greenB, blueB, yellowB, redB;
+    public Button replayB;
     public boolean match;
     private String highScore1key = "key1", highScore2key = "key2",
             highScore3key = "key3", highScore4key = "key4", highScore5key = "key5";
@@ -70,6 +72,8 @@ public class RandomActivity extends AppCompatActivity implements View.OnTouchLis
         yellowB.setOnTouchListener(this);
         redB = (ImageButton) findViewById(R.id.redButton);
         redB.setOnTouchListener(this);
+        replayB = (Button) findViewById(R.id.replayButton);
+        replayB.setOnTouchListener(this);
 
     }
 
@@ -199,26 +203,39 @@ public class RandomActivity extends AppCompatActivity implements View.OnTouchLis
         checkHighScore();
         numChoices = 0;
         lockBtns = true;
+        turnTV.setText("GAMEOVER!!");
+        replayB.setVisibility(View.VISIBLE);
     }
 
     /**
-     * checkHighScore compares the players score with the five highest previous scores.
+     * checkHighScore compares the players score with the five highest previous scores
+     * and adjusts the scores accordingly.
      */
 
     private void checkHighScore() {
         SharedPreferences prefs = this.getSharedPreferences("randomHighScores", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        if (score > prefs.getInt(highScore1key, 0)) {
+        if (score >= prefs.getInt(highScore1key, 0)) {
             editor.putInt(highScore1key, score);
+            editor.putInt(highScore2key, prefs.getInt(highScore1key, 0));
+            editor.putInt(highScore3key, prefs.getInt(highScore2key, 0));
+            editor.putInt(highScore4key, prefs.getInt(highScore3key, 0));
+            editor.putInt(highScore5key, prefs.getInt(highScore4key, 0));
             editor.commit();
-        } else if (score > prefs.getInt(highScore2key, 0)) {
+        } else if (score >= prefs.getInt(highScore2key, 0)) {
             editor.putInt(highScore2key, score);
+            editor.putInt(highScore3key, prefs.getInt(highScore2key, 0));
+            editor.putInt(highScore4key, prefs.getInt(highScore3key, 0));
+            editor.putInt(highScore5key, prefs.getInt(highScore4key, 0));
             editor.commit();
-        } else if (score > prefs.getInt(highScore3key, 0)) {
+        } else if (score >= prefs.getInt(highScore3key, 0)) {
             editor.putInt(highScore3key, score);
+            editor.putInt(highScore4key, prefs.getInt(highScore3key, 0));
+            editor.putInt(highScore5key, prefs.getInt(highScore4key, 0));
             editor.commit();
-        } else if (score > prefs.getInt(highScore4key, 0)) {
+        } else if (score >= prefs.getInt(highScore4key, 0)) {
             editor.putInt(highScore4key, score);
+            editor.putInt(highScore5key, prefs.getInt(highScore4key, 0));
             editor.commit();
         } else if (score > prefs.getInt(highScore5key, 0)) {
             editor.putInt(highScore5key, score);
@@ -387,6 +404,16 @@ public class RandomActivity extends AppCompatActivity implements View.OnTouchLis
         playerTurn();
     }
 
+    /**
+     *  resetGame resets the game to allow the player to play again.
+     */
+    private void resetGame () {
+        gameMode();
+        replayB.setVisibility(View.GONE);
+        lockBtns = false;
+        turnTV.setText("");
+    }
+
     private void setModeTextView(String s){
         modeTV.setText(s);
     }
@@ -427,6 +454,13 @@ public class RandomActivity extends AppCompatActivity implements View.OnTouchLis
                 playerPressed(3);
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 playerReset(3);
+            }
+        } else if (view.getId() == R.id.replayButton && lockBtns) {
+            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                replayB.setPressed(true);
+            } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                replayB.setPressed(false);
+                resetGame();
             }
         }
         return false;

@@ -135,7 +135,7 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
         initiateVariables();
 
         setModeTextView("Pattern Mode");
-        countDown = new PatternActivity.CountDown();
+        countDown = new PatternActivity.CountDown(); //Creates new Countdown object
         countDown.execute();
     }
 
@@ -144,7 +144,7 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
      */
     private void simonsTurn() {
         simonPattern.add(patternMode());
-        simon = new PatternActivity.Simon();
+        simon = new PatternActivity.Simon();  // Creates new Simon object
         simon.execute();
     }
 
@@ -269,9 +269,6 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
                     if (soundsLoaded.contains(soundID[y])) {
                         soundPool.play(soundID[y], 1.0f, 1.0f, 0, 0, 1.0f);
                     }
-                    if (tempo > 320) {
-                        tempo -= 20;
-                    }
                     Thread.sleep(tempo);
                     runOnUiThread(new Runnable() {
                         @Override
@@ -333,7 +330,7 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
             String textview;
             try {
                 for (int i = 3; i >= 0; i--) {
-                    if(isCancelled()) return null;
+                    if(isCancelled()) return null;  // Restarts the game if the user backs out
                     if (i == 0) {
                         textview = "Go";
                         cdSound = soundID[5];
@@ -361,7 +358,7 @@ public class PatternActivity extends AppCompatActivity implements View.OnTouchLi
         }
 
         /**
-         * onPostExecute is called when the game ends.
+         * onPostExecute is called to update the score and start Simons turn.
          */
         @Override
         protected void onPostExecute(Void aVoid) {

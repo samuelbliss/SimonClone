@@ -275,9 +275,6 @@ public class ReverseActivity extends AppCompatActivity implements View.OnTouchLi
                     if (soundsLoaded.contains(soundID[y])) {
                         soundPool.play(soundID[y], 1.0f, 1.0f, 0, 0, 1.0f);
                     }
-                    if (tempo > 320) {
-                        tempo -= 20;
-                    }
                     Thread.sleep(tempo);
                     runOnUiThread(new Runnable() {
                         @Override
